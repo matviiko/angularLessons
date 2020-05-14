@@ -1,0 +1,12 @@
+<p>Hello world!!</p>
+
+    <input
+            type="text"
+            (keyup.enter)="onInput($event)"
+            (blur)="onBlur(myInput.value)"
+            #myInput
+
+    >
+<button (click)="onClick()">Click</button>
+
+<p><strong>{{inputValue}}</strong></p>
