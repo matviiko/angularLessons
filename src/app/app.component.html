@@ -1,12 +1,13 @@
-<p>Hello world!!</p>
+<h2>Hello world!!</h2>
+//////////////  [ngStyle] lessons  //////////
+<button (click)="backgroundClick = !backgroundClick" >Click</button>
 
-    <input
-            type="text"
-            (keyup.enter)="onInput($event)"
-            (blur)="onBlur(myInput.value)"
-            #myInput
+<div [ngStyle]="{
+height: '200px',
+weight: '200px',
+borderRadius: '5px',
+border: '1px solid #ccc',
+background: backgroundClick ? 'yellow' : 'red'
+}">
 
-    >
-<button (click)="onClick()">Click</button>
-
-<p><strong>{{inputValue}}</strong></p>
+</div>
