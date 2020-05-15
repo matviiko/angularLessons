@@ -5,8 +5,11 @@
 
     <hr/>
 
-    <app-post></app-post>
-    <app-post></app-post>
+    <app-post
+    *ngFor="let postItem of posts"
+    [post]="postItem"
+    ></app-post>
+
 
 </div>
 
