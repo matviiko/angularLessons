@@ -1,24 +1,5 @@
-<h2>Hello world!!</h2>
-//////////////  [ngStyle] lessons  //////////
-<button (click)="toggle = !toggle">Click</button>
+<div>
+    <h2>Hello world!!</h2>
 
-<!--<div [ngStyle]="{-->
-<!--height: '200px',-->
-<!--weight: '200px',-->
-<!--borderRadius: '5px',-->
-<!--border: '1px solid #ccc',-->
-<!--background: backgroundClick ? 'yellow' : 'red'-->
-<!--}">-->
-<!--</div>-->
+</div>
 
-
-<!--<p [ngClass]="{red: backgroundClick,-->
-<!--green: !backgroundClick-->
-<!--}">Lorem ipsum dolor sit amet.</p>-->
-
-
-<p *ngIf="toggle; else greenP " class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, modi.</p>
-
-<ng-template #greenP   >
-<p  class="green">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, modi.</p>
-</ng-template>
