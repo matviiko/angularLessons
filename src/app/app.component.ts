@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-backgroundClick = false
+toggle = false
+
 
 }
