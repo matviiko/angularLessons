@@ -20,7 +20,6 @@ export class AppComponent {
 
   upDatePosts (post: Post) {
     this.posts.unshift(post)
-    console.log('Post', post)
   }
 
 }
