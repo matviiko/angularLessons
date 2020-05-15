@@ -1,7 +1,9 @@
 <div class="container">
     <h2>AngularComponent world!!</h2>
 
-    <app-post-form></app-post-form>
+    <app-post-form
+    (onAdd)="upDatePosts($event)"
+    ></app-post-form>
 
     <hr/>
 

@@ -18,4 +18,9 @@ export class AppComponent {
     {title: 'I want learn Angulascsccsascar', text: 'I learning Angacascsasular', id: 2 }
   ]
 
+  upDatePosts (post: Post) {
+    this.posts.unshift(post)
+    console.log('Post', post)
+  }
+
 }
