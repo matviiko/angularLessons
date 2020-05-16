@@ -2,5 +2,18 @@
     <h2>Angular Directives world!!</h2>
     <p [appStyle]="'green'">Lo ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, modi.</p>
     <p [appStyle]="'red'">Lo ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, modi.</p>
+
+        <button class="btn" (click)="isiVisible = !isiVisible">Toggle</button>
+
+<!--    <div *ngIf="isiVisible" class="wraper">-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim facere harum ipsum iste nemo neque nesciunt nostrum sequi voluptatem voluptatibus.</p>-->
+<!--    </div>-->
+
+    <ng-template  [ngIf]="isiVisible" >
+        <div class="wraper">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim facere harum ipsum iste nemo neque nesciunt nostrum sequi voluptatem voluptatibus.</p>
+        </div>
+    </ng-template>
+
 </div>
 
