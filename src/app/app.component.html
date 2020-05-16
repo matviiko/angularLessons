@@ -1,24 +1,24 @@
-<h2>Hello world!!</h2>
-//////////////  [ngStyle] lessons  //////////
-<button (click)="toggle = !toggle">Click</button>
+<div class="container">
+    <h2>AngularComponent world!!</h2>
 
-<!--<div [ngStyle]="{-->
-<!--height: '200px',-->
-<!--weight: '200px',-->
-<!--borderRadius: '5px',-->
-<!--border: '1px solid #ccc',-->
-<!--background: backgroundClick ? 'yellow' : 'red'-->
-<!--}">-->
-<!--</div>-->
+    <app-post-form
+    (onAdd)="upDatePosts($event)"
+    ></app-post-form>
+
+    <hr/>
+
+    <app-post
+    *ngFor="let postItem of posts"
+    [post]="postItem"
+    >
+        <div #info >
+            <small *ngIf="postItem.text.length > 10; else short"> This Post is Big</small>
+            <ng-template #short>
+                <small>This Post is small</small>
+            </ng-template>
+        </div>
+    </app-post>
 
 
-<!--<p [ngClass]="{red: backgroundClick,-->
-<!--green: !backgroundClick-->
-<!--}">Lorem ipsum dolor sit amet.</p>-->
+</div>
 
-
-<p *ngIf="toggle; else greenP " class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, modi.</p>
-
-<ng-template #greenP   >
-<p  class="green">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, modi.</p>
-</ng-template>
