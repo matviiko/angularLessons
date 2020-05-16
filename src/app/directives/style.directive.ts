@@ -1,10 +1,12 @@
-import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appStyle]'
 })
 export class StyleDirective {
   @Input('appStyle') color: string = 'black'
+    @HostBinding('style.color') elColor = null
+
 
   constructor(private el: ElementRef, private r: Renderer2 ) {
     this.r.setStyle(this.el.nativeElement, 'font-size', '1rem');
@@ -16,11 +18,13 @@ export class StyleDirective {
 }
 
 @HostListener('mouseenter') onEnter () {
-  this.r.setStyle(this.el.nativeElement, 'color', this.color);
+      this.elColor = this.color
+  // this.r.setStyle(this.el.nativeElement, 'color', this.color);
 }
 
 @HostListener('mouseleave') onLeave () {
-    this.r.setStyle(this.el.nativeElement, 'color', null);
+      this.elColor = null
+    // this.r.setStyle(this.el.nativeElement, 'color', null);
   }
 
 }
