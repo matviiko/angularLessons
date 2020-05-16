@@ -1,24 +1,5 @@
 <div class="container">
-    <h2>AngularComponent world!!</h2>
-
-    <app-post-form
-    (onAdd)="upDatePosts($event)"
-    ></app-post-form>
-
-    <hr/>
-
-    <app-post
-    *ngFor="let postItem of posts"
-    [post]="postItem"
-    >
-        <div #info >
-            <small *ngIf="postItem.text.length > 10; else short"> This Post is Big</small>
-            <ng-template #short>
-                <small>This Post is small</small>
-            </ng-template>
-        </div>
-    </app-post>
-
+    <h2>Angular Directives world!!</h2>
 
 </div>
 
