@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+export interface Post {
+  title: string,
+  text: string
+}
 
 
 @Component({
@@ -9,6 +13,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  isiVisible = true
+  search = ''
+  searchField = 'title'
+
+  posts: Post[] = [
+    {title: 'My title', text:'My text always try'},
+    {title: 'My work', text:'My work is drink bear'},
+    {title: 'My games', text:'I love play football'},
+  ]
 
 }
