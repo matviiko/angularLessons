@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface Post {
-  title: string
-  text: string
-}
-
+import {interval, Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,19 +8,36 @@ export interface Post {
 })
 export class AppComponent {
 
-  search = ''
-  searchField = 'title'
+  sub: Subscription
 
-  posts: Post[] = [
-    {title: 'My title', text:'My text always try'},
-    {title: 'My work', text:'My work is drink bear'},
-    {title: 'My games', text:'I love play football'},
-  ]
+  constructor() {
+  let steam$ = new Observable(observer => {
+    setTimeout(() => {
+      observer.next(1)
+    }, 1500)
 
-  addPosts() {
-      this.posts.unshift({
-        title: 'New title after unshift obj',
-        text: 'Text after unshift obj in tetx line '
-      })
+    setTimeout(() => {
+      observer.complete()
+    }, 2100)
+
+    setTimeout(() => {
+      observer.error('Something wrong')
+    }, 2000)
+
+    setTimeout(() => {
+      observer.next(2)
+    }, 2500)
+  })
+
+    this.sub = steam$.subscribe(
+        value => {console.log('Next: ',value)},
+        error => console.log('Error: ', error),
+        () => console.log('Complete')
+    )
   }
+
+  stop() {
+    this.sub.unsubscribe()
+  }
+
 }
