@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Angular Services</h1>
 
-
-
+    <div class="card">AppCounter: {{appCounterService.counter}}</div>
+    <button class="btn" (click)="appCounterService.increase()" >+</button>
+    <button class="btn" (click)="appCounterService.decrease()" >-</button>
 </div>
