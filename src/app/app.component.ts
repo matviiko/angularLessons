@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 export interface Post {
-  title: string,
+  title: string
   text: string
 }
 
@@ -22,4 +22,10 @@ export class AppComponent {
     {title: 'My games', text:'I love play football'},
   ]
 
+  addPosts() {
+      this.posts.unshift({
+        title: 'New title after unshift obj',
+        text: 'Text after unshift obj in tetx line '
+      })
+  }
 }

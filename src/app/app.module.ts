@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import { StyleDirective } from './directives/style.directive';
+import { IfnotDirective } from './directives/ifnot.directive';
+import { ExMarksPipe } from './pipes/ex-marks.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     StyleDirective,
+    IfnotDirective,
+    ExMarksPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

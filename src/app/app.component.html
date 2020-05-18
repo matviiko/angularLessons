@@ -1,19 +1,19 @@
 <div class="container">
-    <h2>Angular Directives world!!</h2>
-    <p [appStyle]="'green'">Lo ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, modi.</p>
-    <p [appStyle]="'red'">Lo ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, modi.</p>
+    <h1>Angular Pipes</h1>
 
-        <button class="btn" (click)="isiVisible = !isiVisible">Toggle</button>
+    <button class="btn" (click)="searchField = 'title'">Title</button>
+    <button class="btn" (click)="searchField = 'text'">Text</button>
+    <hr>
+    <button class="btn" (click)="addPosts()">Add Post</button>
 
-<!--    <div *ngIf="isiVisible" class="wraper">-->
-<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim facere harum ipsum iste nemo neque nesciunt nostrum sequi voluptatem voluptatibus.</p>-->
-<!--    </div>-->
 
-    <ng-template  [ngIf]="isiVisible" >
-        <div class="wraper">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim facere harum ipsum iste nemo neque nesciunt nostrum sequi voluptatem voluptatibus.</p>
-        </div>
-    </ng-template>
+    <input type="text" [(ngModel)]="search">
 
+    <div
+            *ngFor="let post of posts | filter:search:searchField"
+            class="card"
+    >
+        <h2>{{post.title}}</h2>
+        <p>{{post.text}}</p>
+    </div>
 </div>
-
