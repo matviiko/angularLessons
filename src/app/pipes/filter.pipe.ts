@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Post} from "../app.component";
 
 @Pipe({
   name: 'filter',
@@ -7,7 +6,7 @@ import {Post} from "../app.component";
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(posts: Post[], search: string = '', field: string = 'title'): Post[] {
+  transform(posts: any, search: string = '', field: string = 'title'): any {
     if (!search.trim()) {
       return posts
     }
