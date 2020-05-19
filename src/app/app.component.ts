@@ -15,18 +15,35 @@ export interface Todo {
 })
 export class AppComponent implements OnInit {
 
-  todos: Todo[] = []
+    todos: Todo[] = []
+
+    todoTitle = ""
+
+    constructor(private http: HttpClient) {
+    }
+
+    ngOnInit() {
+        this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+            .subscribe(todos => {
+                console.log(todos)
+                this.todos = todos
+            })
+    }
+
+    addTodo() {
+        if (!this.todoTitle.trim()) {
+            return
+        }
+        const newTodo: Todo = {
+        title: this.todoTitle,
+        completed: false
+        }
 
 
-  constructor(private http: HttpClient) {
-  }
-
-  ngOnInit() {
-  this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-      .subscribe(todos => {
-        console.log(todos)
-        this.todos = todos
-      })
-  }
+        this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+            .subscribe(todo => {
+                this.todos.push(todo)
+                this.todoTitle = ''
+            })
+    }
 }
-
