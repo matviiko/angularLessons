@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {HttpClient} from "@angular/common/http";
-import {delay} from "rxjs/operators";
+import {delay, filter} from "rxjs/operators";
 
 export interface Todo {
   completed: boolean
@@ -57,6 +57,14 @@ export class AppComponent implements OnInit {
                 console.log(todos)
                 this.todos = todos
                 this.loading = false
+            })
+    }
+
+
+    removeTodo(id: number) {
+        this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+            .subscribe(resp => {
+                this.todos = this.todos.filter(t => t.id !== id)
             })
     }
 }
