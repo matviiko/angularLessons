@@ -62,7 +62,6 @@
     <div class="card" formGroupName="skills">
       <h2>Ваши навыки</h2>
       <button class="btn" type="button" (click)="addSkill()">Добавить умение</button>
-
       <div
         class="form-control"
         *ngFor="let control of form.get('skills').controls; let idx = index"

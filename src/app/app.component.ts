@@ -9,6 +9,7 @@ import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms'
 export class AppComponent implements OnInit {
   form: FormGroup
 
+
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl('', [
@@ -52,8 +53,9 @@ export class AppComponent implements OnInit {
 
   addSkill() {
     const control = new FormControl('', Validators.required);
-    (<FormArray>this.form.get('skills')).push(control)
+    return (<FormArray>this.form.get('skills')).push(control)
     // (this.form.get('skills') as FormArray).push(control)
   }
+
 }
 
