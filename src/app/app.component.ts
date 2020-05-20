@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
 
     todoTitle = ""
 
+    error = ''
+
     constructor(private todosService: TodosService) {
     }
 
@@ -45,6 +47,9 @@ export class AppComponent implements OnInit {
                 console.log(todos)
                 this.todos = todos
                 this.loading = false
+            }, error => {
+                this.error = error.message
+                console.log(error.message)
             })
     }
 
