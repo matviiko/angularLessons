@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
                 this.loading = false
             }, error => {
                 this.error = error.message
-                console.log(error.message)
+                // console.log(error.message)
             })
     }
 
