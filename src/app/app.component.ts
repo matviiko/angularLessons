@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core'
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms'
+import {Todo, TodosService} from "./services/todos.service";
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,55 +9,62 @@ import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  form: FormGroup
 
+    todos: Todo[] = []
 
-  ngOnInit() {
-    this.form = new FormGroup({
-      email: new FormControl('', [
-        Validators.email,
-        Validators.required
-      ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-      address: new FormGroup({
-        country: new FormControl('by'),
-        city: new FormControl('Минск', Validators.required)
-      }),
-      skills: new FormArray([])
-    })
-  }
+    loading = false
 
-  submit() {
-    if (this.form.valid) {
-      console.log('Form: ', this.form)
-      const formData = {...this.form.value}
+    todoTitle = ""
 
-      console.log('Form Data:', formData)
-      this.form.reset()
-    }
-  }
+    error = ''
 
-  setCapital() {
-    const cityMap = {
-      ru: 'Москва',
-      ua: 'Киев',
-      by: 'Минск'
+    constructor(private todosService: TodosService) {
     }
 
-    const cityKey = this.form.get('address').get('country').value
-    const city = cityMap[cityKey]
+    ngOnInit() {
+        this.fetchTodos()
+    }
 
-    this.form.patchValue({address: {city}})
-  }
+    addTodo() {
+        if (!this.todoTitle.trim()) {
+            return
+        }
 
-  addSkill() {
-    const control = new FormControl('', Validators.required);
-    return (<FormArray>this.form.get('skills')).push(control)
-    // (this.form.get('skills') as FormArray).push(control)
-  }
+        this.todosService.addTodo({
+            title: this.todoTitle,
+            completed: false
+        }).subscribe(todo => {
+            this.todos.push(todo)
+            this.todoTitle = ''
+        })
+    }
 
+    fetchTodos() {
+        this.loading = true
+
+        this.todosService.fetchTodos()
+            .subscribe(todos => {
+                // console.log(todos)
+                this.todos = todos
+                this.loading = false
+            }, error => {
+                this.error = error.message
+                // console.log(error.message)
+            })
+    }
+
+
+    removeTodo(id: number) {
+        this.todosService.removeTodos(id)
+            .subscribe(resp => {
+                this.todos = this.todos.filter(t => t.id !== id)
+            })
+    }
+
+    completeTodo(id: number) {
+        this.todosService.completeTodo(id)
+            .subscribe(todo => {
+            this.todos.find(t => t.id === todo.id).completed = true
+        })
+    }
 }
-
