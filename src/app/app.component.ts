@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
 
         this.todosService.fetchTodos()
             .subscribe(todos => {
-                console.log(todos)
+                // console.log(todos)
                 this.todos = todos
                 this.loading = false
             }, error => {
