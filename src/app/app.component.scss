@@ -1,13 +1,5 @@
-.wraper {
-  border: 1px solid #333333;
-  padding: 1rem;
+p {
+  font-size: 1.5rem;
 }
 
-input {
-  &.ng-invalid.ng-touched {
-    border: 1px solid red;
-  }
-  &.ng-valid.ng-touched {
-    border: 1px solid green;
-  }
-}
+
